@@ -1,0 +1,53 @@
+
+
+entity Cell {
+	index INTEGER
+}
+
+entity Jumper {
+	startIndex Integer
+    endIndex Integer
+    
+    
+}
+
+
+entity Board{
+     boardId Integer
+}
+
+entity Token{
+     id Integer
+     color String
+}
+
+entity Game{
+   id Integer
+}
+
+entity GameManger{
+    id Integer
+}
+entity GameRoomManager{
+    id Integer
+    
+}
+entity User{
+     name String
+}
+relationship OneToMany {
+Cell to Board{cell}
+Jumper to Board{jump}
+GameManger{playerId} to Token
+GameRoomManager{gameManagerId} to GameManger
+
+}
+
+relationship OneToOne {
+User{tokenId} to Token
+Game{boardId} to Board
+GameManger{GameId} to Game
+
+}
+
+
